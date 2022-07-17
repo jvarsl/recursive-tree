@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: '[recursive]',
+  selector: 'app-tree-view-recursive',
   templateUrl: './tree-view.component.html',
   styleUrls: ['./tree-view.component.css'],
 })

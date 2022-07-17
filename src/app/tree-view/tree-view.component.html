@@ -1,20 +1,20 @@
 <ul class="tree" *ngIf="level==undefined">
-  <ng-container *ngTemplateOutlet="tree;context:{children:children,search:search}">
+  <ng-container *ngTemplateOutlet="tree">
   </ng-container>
 </ul>
-<ng-container *ngIf="level!=undefined">
-  <ng-container *ngTemplateOutlet="tree;context:{children:children,search:search}">
+<ul *ngIf="level!=undefined">
+  <ng-container *ngTemplateOutlet="tree">
   </ng-container>
-</ng-container>
+</ul>
 
-<ng-template #tree let-children="children" let-search="search">
+<ng-template #tree>
   <li *ngFor="let item of children">
     <div (click)="item.hasChildren && open(item)">
       <span [ngClass]="!item.hasChildren?'doc':item.isOpen?'open':'close'"></span>
       {{item.label}}{{item.loading}}
     </div>
-    <ul recursive *ngIf="item.children && item.isOpen" [children]="item.children" [parent]="self"
+    <app-tree-view-recursive *ngIf="item.children && item.isOpen" [children]="item.children" [parent]="self"
       [level]="level!=undefined?level+1:0" [search]="search">
-    </ul>
+    </app-tree-view-recursive>
   </li>
 </ng-template>
